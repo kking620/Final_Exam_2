@@ -75,7 +75,7 @@ class ListQueue {
                 cout << "The queue for the coffee shop is currently empty!\n";
             }
             else {
-                cout << "Current Queue for the Coffee Shop:\n";
+                cout << "Queue for the Coffee Shop:\n";
                 while (current != nullptr) {
                     cout << current->name << " ordered a " << current->order << endl;
                     current = current->next;
@@ -145,8 +145,8 @@ int main() {
         if (muffinBoothQueue.empty()) {
             cout << "The queue for the muffin booth is currently empty!";
         }
-        else if (!muffinBoothQueue.empty()) {
-            cout << "Current Queue for the Muffin Booth:\n";
+        else {
+            cout << "Queue for the Muffin Booth:\n";
             for (const auto& pair : muffinBoothQueue) {
                 cout << pair.first << " ordered a " << pair.second << endl;
             }
@@ -167,24 +167,60 @@ int main() {
         if (braceletBoothQueue.empty()) {
             cout << "The queue for the bracelet booth is currently empty!";
         }
-        else if (!braceletBoothQueue.empty()) {
-            cout << "Current Queue for the Bracelet Booth:\n";
+        else {
+            cout << "Queue for the Bracelet Booth:\n";
             for (int i = 0; i < braceletBoothQueue.size(); i++) {
                 cout << braceletBoothQueue[i].first << " ordered a " << braceletBoothQueue[i].second << endl;
             }
+        }
+
+        if (!braceletBoothQueue.empty())
+            braceletBoothQueue.erase(braceletBoothQueue.begin());
+        
+        int customerJoinsBraceletBooth = (1 + rand() % 100);
+        if (customerJoinsBraceletBooth <= 50) {
+            string name = NAMES[rand() % NUM_NAMES];
+            string order = BRACELET_ORDERS[rand() % BRACELET_ORDERS.size()];
+            braceletBoothQueue.push_back({name, order});
+        }
+
+        cout << endl;
+
+        if (bookBoothQueue.empty()) {
+            cout << "The queue for the book booth is currently empty!\n";
+        }
+        else {
+            cout << "Queue for the Book Booth:\n";
+            for (const auto& pair : bookBoothQueue) {
+                cout << pair.first << " ordered a " << pair.second << endl;
+            }
+        }
+
+        if(!bookBoothQueue.empty())
+            bookBoothQueue.pop_front();
+
+        int customerJoinsBookBooth = (1 + rand() % 100);
+        if (customerJoinsBookBooth <= 50) {
+            string name = NAMES[rand() % NUM_NAMES];
+            string order = BOOK_TITLES[rand() % NUM_BOOK_TITLES];
+            bookBoothQueue.push_back({name, order});
         }
 
         cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     }
 
     cout << "Final Queues:\n";
+    
+    cout << "Final Queue for the Coffee Shop:\n";
     coffeeShopQueue.displayQueue();
     cout << endl;
 
+    cout << "Final Queue for the Muffin Booth:\n";
     if (muffinBoothQueue.empty()) {
         cout << "The queue for the muffin booth is currently empty!\n";
     }
     else if (!muffinBoothQueue.empty()) {
+            
             for (const auto& pair : muffinBoothQueue) {
                 cout << pair.first << " ordered a " << pair.second << endl;
             }
