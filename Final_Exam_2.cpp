@@ -62,7 +62,7 @@ class ListQueue {
                 Customer* temp = head;
                 head = head->next;
                 if(head == nullptr) {
-                    tail == nullptr;
+                    tail = nullptr;
                 }
                 delete temp;
             }
@@ -151,10 +151,9 @@ int main() {
     cout << "Final Queues:\n";
     coffeeShopQueue.displayQueue();
     if (muffinBoothQueue.empty()) {
-            cout << "The queue for the muffin booth is currently empty!";
-        }
-        else if (!muffinBoothQueue.empty()) {
-            cout << "Current Queue for the Muffin Booth:\n";
+        cout << "The queue for the muffin booth is currently empty!";
+    }
+    else if (!muffinBoothQueue.empty()) {
             for (const auto& pair : muffinBoothQueue) {
                 cout << pair.first << " ordered a " << pair.second << endl;
             }
