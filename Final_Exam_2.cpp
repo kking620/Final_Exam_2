@@ -46,6 +46,28 @@ class ListQueue {
             }
         }
 
+        bool isEmpty() {
+            if(head == nullptr) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        void customerServed() {
+            if(head == nullptr)
+                return;
+            else {
+                Customer* temp = head;
+                head = head->next;
+                if(head == nullptr) {
+                    tail == nullptr;
+                }
+                delete temp;
+            }
+        }
+
         void displayQueue() {
             Customer* current = head;
 
@@ -80,6 +102,23 @@ int main() {
         coffeeShopQueue.addToBackOfQueue(name, order);
     }
 
+    for (int i = 0; i < 10; i++) {
+        coffeeShopQueue.displayQueue();
+
+        if (!coffeeShopQueue.isEmpty())
+            coffeeShopQueue.customerServed();
+
+        int customerJoins = rand() % 2;
+        if (customerJoins == 0) {
+            string name = NAMES[rand() % NUM_NAMES];
+            string order = COFFEE_ORDERS[rand() % NUM_COFFEE_ORDERS];
+            coffeeShopQueue.addToBackOfQueue(name, order);
+        }
+
+        cout << endl;
+    }
+
+    cout << "Final Queue:\n";
     coffeeShopQueue.displayQueue();
 
     return 0;
