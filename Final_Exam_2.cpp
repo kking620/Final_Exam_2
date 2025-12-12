@@ -72,7 +72,7 @@ class ListQueue {
             Customer* current = head;
 
             if (current == nullptr) {
-                cout << "The queue for the coffee shop is currently empty!\n";
+                cout << "The queue for the coffee booth is currently empty!\n";
             }
             else {
                 while (current != nullptr) {
@@ -127,7 +127,7 @@ int main() {
     }
 
     for (int i = 0; i < 10; i++) {
-        cout << "Queue for the Coffee Shop:\n";
+        cout << "Queue for the Coffee Booth:\n";
         coffeeShopQueue.displayQueue();
 
         if (!coffeeShopQueue.isEmpty())
@@ -144,7 +144,7 @@ int main() {
 
         cout << "Queue for the Muffin Booth:\n";
         if (muffinBoothQueue.empty()) {
-            cout << "The queue for the muffin booth is currently empty!";
+            cout << "The queue for the muffin booth is currently empty!\n";
         }
         else {
             for (const auto& pair : muffinBoothQueue) {
@@ -152,8 +152,10 @@ int main() {
             }
         }
        
-        if (!muffinBoothQueue.empty())
+        if (!muffinBoothQueue.empty()) {
+            cout << muffinBoothQueue.front().first << " was served." << endl;
             muffinBoothQueue.pop_front();
+        }
         
         int customerJoinsMuffinBooth = (1 + rand() % 100);
         if (customerJoinsMuffinBooth <= 50) {
@@ -166,7 +168,7 @@ int main() {
         
         cout << "Queue for the Bracelet Booth:\n";
         if (braceletBoothQueue.empty()) {
-            cout << "The queue for the bracelet booth is currently empty!";
+            cout << "The queue for the bracelet booth is currently empty!\n";
         }
         else {
             for (int i = 0; i < braceletBoothQueue.size(); i++) {
@@ -174,8 +176,10 @@ int main() {
             }
         }
 
-        if (!braceletBoothQueue.empty())
+        if (!braceletBoothQueue.empty()) {
+            cout << braceletBoothQueue.front().first << " was served." << endl;
             braceletBoothQueue.erase(braceletBoothQueue.begin());
+        }
         
         int customerJoinsBraceletBooth = (1 + rand() % 100);
         if (customerJoinsBraceletBooth <= 50) {
@@ -196,8 +200,10 @@ int main() {
             }
         }
 
-        if(!bookBoothQueue.empty())
+        if(!bookBoothQueue.empty()) {
+            cout << bookBoothQueue.front().first << " was served." << endl;
             bookBoothQueue.pop_front();
+        }
 
         int customerJoinsBookBooth = (1 + rand() % 100);
         if (customerJoinsBookBooth <= 50) {
@@ -212,7 +218,7 @@ int main() {
     cout << "\nFinal Queues:\n";
     cout << "~~~~~~~~~~~~~\n\n";
     
-    cout << "Final Queue for the Coffee Shop (Singly Linked List):\n";
+    cout << "Final Queue for the Coffee Booth (Singly Linked List):\n";
     coffeeShopQueue.displayQueue();
     cout << endl;
 
