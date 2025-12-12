@@ -89,10 +89,12 @@ const string NAMES[] = {"Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Gra
 const string COFFEE_ORDERS[] = {"Latte", "Cappuccino", "Large Espresso", "Cold Brew", "Small Americano", "Mocha"};
 const string MUFFIN_ORDERS[] = {"Blueberry Muffin", "Chocolate Chip Muffin", "Banana Nut Muffin", "Poppy Seed Muffin"};
 const vector<string> BRACELET_ORDERS = {"Macrame Bracelet", "Beaded Bracelet", "Charm Bracelet", "Leather Wrap Bracelet"};
+const string BOOK_TITLES[] = {"C++ Primer", "Dune", "1984", "The Hitchhiker's Guide", "Frankenstein", "Dracula", "Moby Dick"};
 
 const int NUM_NAMES = 8;
 const int NUM_COFFEE_ORDERS = 6;
 const int NUM_MUFFIN_ORDERS = 4;
+const int NUM_BOOK_TITLES = 7;
 
 int main() {
     srand(time(0));
@@ -116,6 +118,13 @@ int main() {
         string name = NAMES[rand() % NUM_NAMES];
         string order = BRACELET_ORDERS[rand() % BRACELET_ORDERS.size()];
         braceletBoothQueue.push_back({name, order});
+    }
+
+    list<pair<string, string>> bookBoothQueue;
+    for (int i = 0; i < 3; i++) {
+        string name = NAMES[rand() % NUM_NAMES];
+        string order = BOOK_TITLES[rand() % NUM_BOOK_TITLES];
+        bookBoothQueue.push_back({name, order});
     }
 
     for (int i = 0; i < 10; i++) {
