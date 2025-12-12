@@ -88,6 +88,7 @@ class ListQueue {
 const string NAMES[] = {"Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi"};
 const string COFFEE_ORDERS[] = {"Latte", "Cappuccino", "Large Espresso", "Cold Brew", "Small Americano", "Mocha"};
 const string MUFFIN_ORDERS[] = {"Blueberry Muffin", "Chocolate Chip Muffin", "Banana Nut Muffin", "Poppy Seed Muffin"};
+const vector<string> BRACELET_ORDERS = {"Macrame Bracelet", "Beaded Bracelet", "Charm Bracelet", "Leather Wrap Bracelet"};
 
 const int NUM_NAMES = 8;
 const int NUM_COFFEE_ORDERS = 6;
@@ -108,6 +109,13 @@ int main() {
         string name = NAMES[rand() % NUM_NAMES];
         string order = MUFFIN_ORDERS[rand() % NUM_MUFFIN_ORDERS];
         muffinBoothQueue.push_back({name, order});
+    }
+
+    vector<pair<string, string>> braceletBoothQueue;
+    for (int i = 0; i < 3; i++) {
+        string name = NAMES[rand() % NUM_NAMES];
+        string order = BRACELET_ORDERS[rand() % BRACELET_ORDERS.size()];
+        braceletBoothQueue.push_back({name, order});
     }
 
     for (int i = 0; i < 10; i++) {
