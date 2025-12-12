@@ -153,18 +153,43 @@ int main() {
             muffinBoothQueue.push_back({name, order});
         }
 
+        cout << endl;
+
+        if (braceletBoothQueue.empty()) {
+            cout << "The queue for the bracelet booth is currently empty!";
+        }
+        else if (!braceletBoothQueue.empty()) {
+            cout << "Current Queue for the Bracelet Booth:\n";
+            for (int i = 0; i < braceletBoothQueue.size(); i++) {
+                cout << braceletBoothQueue[i].first << " ordered a " << braceletBoothQueue[i].second << endl;
+            }
+        }
+
         cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     }
 
     cout << "Final Queues:\n";
     coffeeShopQueue.displayQueue();
+    cout << endl;
+
     if (muffinBoothQueue.empty()) {
-        cout << "The queue for the muffin booth is currently empty!";
+        cout << "The queue for the muffin booth is currently empty!\n";
     }
     else if (!muffinBoothQueue.empty()) {
             for (const auto& pair : muffinBoothQueue) {
                 cout << pair.first << " ordered a " << pair.second << endl;
             }
+    }
+    cout << endl;
+
+
+    if (braceletBoothQueue.empty()) {
+        cout << "The queue for the bracelet booth is currently empty!";
+    }
+    else if (!braceletBoothQueue.empty()) {
+        for (int i = 0; i < braceletBoothQueue.size(); i++) {
+            cout << braceletBoothQueue[i].first << " ordered a " << braceletBoothQueue[i].second << endl;
+        }
     }
 
     return 0;
