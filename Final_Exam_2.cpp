@@ -86,7 +86,7 @@ class ListQueue {
 };
 
 const string NAMES[] = {"Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi"};
-const string COFFEE_ORDERS[] = {"Latte", "Cappuccino", "Espresso", "Cold Brew", "Americano", "Mocha"};
+const string COFFEE_ORDERS[] = {"Latte", "Cappuccino", "Large Espresso", "Cold Brew", "Small Americano", "Mocha"};
 
 const int NUM_NAMES = 8;
 const int NUM_COFFEE_ORDERS = 6;
@@ -108,8 +108,8 @@ int main() {
         if (!coffeeShopQueue.isEmpty())
             coffeeShopQueue.customerServed();
 
-        int customerJoins = rand() % 2;
-        if (customerJoins == 0) {
+        int customerJoins = 1 + rand() % 100;
+        if (customerJoins <= 50) {
             string name = NAMES[rand() % NUM_NAMES];
             string order = COFFEE_ORDERS[rand() % NUM_COFFEE_ORDERS];
             coffeeShopQueue.addToBackOfQueue(name, order);
