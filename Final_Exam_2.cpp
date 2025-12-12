@@ -68,6 +68,14 @@ class ListQueue {
             }
         }
 
+        string getFirstInLineName() {
+            if (head == nullptr)
+                return;
+            else {
+                return head->name;
+            }
+        }
+
         void displayQueue() {
             Customer* current = head;
 
@@ -130,7 +138,7 @@ int main() {
         cout << "Queue for the Coffee Booth:\n";
         coffeeShopQueue.displayQueue();
 
-        if (!coffeeShopQueue.isEmpty())
+        if (!coffeeShopQueue.isEmpty()) 
             coffeeShopQueue.customerServed();
 
         int customerJoinsCoffeeShop = (1 + rand() % 100);
