@@ -75,7 +75,6 @@ class ListQueue {
                 cout << "The queue for the coffee shop is currently empty!\n";
             }
             else {
-                cout << "Queue for the Coffee Shop:\n";
                 while (current != nullptr) {
                     cout << current->name << " ordered a " << current->order << endl;
                     current = current->next;
@@ -128,6 +127,7 @@ int main() {
     }
 
     for (int i = 0; i < 10; i++) {
+        cout << "Queue for the Coffee Shop:\n";
         coffeeShopQueue.displayQueue();
 
         if (!coffeeShopQueue.isEmpty())
@@ -141,12 +141,12 @@ int main() {
         }
 
         cout << endl;
-        
+
+        cout << "Queue for the Muffin Booth:\n";
         if (muffinBoothQueue.empty()) {
             cout << "The queue for the muffin booth is currently empty!";
         }
         else {
-            cout << "Queue for the Muffin Booth:\n";
             for (const auto& pair : muffinBoothQueue) {
                 cout << pair.first << " ordered a " << pair.second << endl;
             }
@@ -163,12 +163,12 @@ int main() {
         }
 
         cout << endl;
-
+        
+        cout << "Queue for the Bracelet Booth:\n";
         if (braceletBoothQueue.empty()) {
             cout << "The queue for the bracelet booth is currently empty!";
         }
         else {
-            cout << "Queue for the Bracelet Booth:\n";
             for (int i = 0; i < braceletBoothQueue.size(); i++) {
                 cout << braceletBoothQueue[i].first << " ordered a " << braceletBoothQueue[i].second << endl;
             }
@@ -186,13 +186,13 @@ int main() {
 
         cout << endl;
 
+        cout << "Queue for the Book Booth:\n";
         if (bookBoothQueue.empty()) {
             cout << "The queue for the book booth is currently empty!\n";
         }
         else {
-            cout << "Queue for the Book Booth:\n";
             for (const auto& pair : bookBoothQueue) {
-                cout << pair.first << " ordered a " << pair.second << endl;
+                cout << pair.first << " bought a copy of " << pair.second << endl;
             }
         }
 
@@ -209,15 +209,16 @@ int main() {
         cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     }
 
-    cout << "Final Queues:\n";
+    cout << "\nFinal Queues:\n";
+    cout << "~~~~~~~~~~~~~\n\n";
     
-    cout << "Final Queue for the Coffee Shop:\n";
+    cout << "Final Queue for the Coffee Shop (Singly Linked List):\n";
     coffeeShopQueue.displayQueue();
     cout << endl;
 
-    cout << "Final Queue for the Muffin Booth:\n";
+    cout << "Final Queue for the Muffin Booth (std::dequeue):\n";
     if (muffinBoothQueue.empty()) {
-        cout << "The queue for the muffin booth is currently empty!\n";
+        cout << "The queue for the muffin booth is empty!\n";
     }
     else if (!muffinBoothQueue.empty()) {
             
@@ -227,15 +228,26 @@ int main() {
     }
     cout << endl;
 
-
+    cout << "Final Queue for the Bracelet Booth (std::vector):\n";
     if (braceletBoothQueue.empty()) {
-        cout << "The queue for the bracelet booth is currently empty!";
+        cout << "The queue for the bracelet booth is empty!\n";
     }
     else if (!braceletBoothQueue.empty()) {
         for (int i = 0; i < braceletBoothQueue.size(); i++) {
             cout << braceletBoothQueue[i].first << " ordered a " << braceletBoothQueue[i].second << endl;
         }
     }
+    cout << endl;
+
+    cout << "Final Queue for the Book Booth (std::list):\n";
+        if (bookBoothQueue.empty()) {
+            cout << "The queue for the book booth is empty!\n";
+        }
+        else {
+            for (const auto& pair : bookBoothQueue) {
+                cout << pair.first << " ordered a " << pair.second << endl;
+            }
+        }
 
     return 0;
 }
