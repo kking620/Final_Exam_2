@@ -70,7 +70,7 @@ class ListQueue {
 
         string getFirstInLineName() {
             if (head == nullptr)
-                return;
+                return "Nobody";
             else {
                 return head->name;
             }
@@ -137,9 +137,12 @@ int main() {
     for (int i = 0; i < 10; i++) {
         cout << "Queue for the Coffee Booth:\n";
         coffeeShopQueue.displayQueue();
+        cout << endl;
 
-        if (!coffeeShopQueue.isEmpty()) 
+        if (!coffeeShopQueue.isEmpty()) {
+            cout << coffeeShopQueue.getFirstInLineName() << " was served." << endl;
             coffeeShopQueue.customerServed();
+        }
 
         int customerJoinsCoffeeShop = (1 + rand() % 100);
         if (customerJoinsCoffeeShop <= 50) {
@@ -156,7 +159,7 @@ int main() {
         }
         else {
             for (const auto& pair : muffinBoothQueue) {
-                cout << pair.first << " ordered a " << pair.second << endl;
+                cout << pair.first << " ordered a " << pair.second << endl << endl;
             }
         }
        
@@ -180,7 +183,7 @@ int main() {
         }
         else {
             for (int i = 0; i < braceletBoothQueue.size(); i++) {
-                cout << braceletBoothQueue[i].first << " ordered a " << braceletBoothQueue[i].second << endl;
+                cout << braceletBoothQueue[i].first << " ordered a " << braceletBoothQueue[i].second << endl << endl;
             }
         }
 
@@ -204,7 +207,7 @@ int main() {
         }
         else {
             for (const auto& pair : bookBoothQueue) {
-                cout << pair.first << " bought a copy of " << pair.second << endl;
+                cout << pair.first << " bought a copy of " << pair.second << endl << endl;
             }
         }
 
