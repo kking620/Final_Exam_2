@@ -75,7 +75,7 @@ class ListQueue {
                 cout << "The queue for the coffee shop is currently empty!\n";
             }
             else {
-                cout << "Current Queue:\n";
+                cout << "Current Queue for the Coffee Shop:\n";
                 while (current != nullptr) {
                     cout << current->name << " ordered a " << current->order << endl;
                     current = current->next;
@@ -112,27 +112,53 @@ int main() {
 
     for (int i = 0; i < 10; i++) {
         coffeeShopQueue.displayQueue();
-        
-        if (muffinBoothQueue.empty()) {
-            cout << "The queue for the muffin booth is currently empty!";
-        }
-
 
         if (!coffeeShopQueue.isEmpty())
             coffeeShopQueue.customerServed();
 
-        int customerJoins = (1 + rand() % 100);
-        if (customerJoins <= 50) {
+        int customerJoinsCoffeeShop = (1 + rand() % 100);
+        if (customerJoinsCoffeeShop <= 50) {
             string name = NAMES[rand() % NUM_NAMES];
             string order = COFFEE_ORDERS[rand() % NUM_COFFEE_ORDERS];
             coffeeShopQueue.addToBackOfQueue(name, order);
         }
 
         cout << endl;
+        
+        if (muffinBoothQueue.empty()) {
+            cout << "The queue for the muffin booth is currently empty!";
+        }
+        else if (!muffinBoothQueue.empty()) {
+            cout << "Current Queue for the Muffin Booth:\n";
+            for (const auto& pair : muffinBoothQueue) {
+                cout << pair.first << " ordered a " << pair.second << endl;
+            }
+        }
+       
+        if (!muffinBoothQueue.empty())
+            muffinBoothQueue.pop_front();
+        
+        int customerJoinsMuffinBooth = (1 + rand() % 100);
+        if (customerJoinsMuffinBooth <= 50) {
+            string name = NAMES[rand() % NUM_NAMES];
+            string order = MUFFIN_ORDERS[rand() % NUM_MUFFIN_ORDERS];
+            muffinBoothQueue.push_back({name, order});
+        }
+
+        cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     }
 
-    cout << "Final Queue:\n";
+    cout << "Final Queues:\n";
     coffeeShopQueue.displayQueue();
+    if (muffinBoothQueue.empty()) {
+            cout << "The queue for the muffin booth is currently empty!";
+        }
+        else if (!muffinBoothQueue.empty()) {
+            cout << "Current Queue for the Muffin Booth:\n";
+            for (const auto& pair : muffinBoothQueue) {
+                cout << pair.first << " ordered a " << pair.second << endl;
+            }
+    }
 
     return 0;
 }
