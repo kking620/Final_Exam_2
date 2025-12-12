@@ -72,7 +72,7 @@ class ListQueue {
             Customer* current = head;
 
             if (current == nullptr) {
-                cout << "The queue is currently empty!\n";
+                cout << "The queue for the coffee shop is currently empty!\n";
             }
             else {
                 cout << "Current Queue:\n";
@@ -87,28 +87,41 @@ class ListQueue {
 
 const string NAMES[] = {"Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi"};
 const string COFFEE_ORDERS[] = {"Latte", "Cappuccino", "Large Espresso", "Cold Brew", "Small Americano", "Mocha"};
+const string MUFFIN_ORDERS[] = {"Blueberry Muffin", "Chocolate Chip Muffin", "Banana Nut Muffin", "Poppy Seed Muffin"};
 
 const int NUM_NAMES = 8;
 const int NUM_COFFEE_ORDERS = 6;
+const int NUM_MUFFIN_ORDERS = 4;
 
 int main() {
     srand(time(0));
 
     ListQueue coffeeShopQueue;
-
     for(int i = 0; i < 3; i++) {
         string name = NAMES[rand() % NUM_NAMES];
         string order = COFFEE_ORDERS[rand() % NUM_COFFEE_ORDERS];
         coffeeShopQueue.addToBackOfQueue(name, order);
     }
 
+    deque<pair<string, string>> muffinBoothQueue;
+    for(int i = 0; i < 3; i++) {
+        string name = NAMES[rand() % NUM_NAMES];
+        string order = MUFFIN_ORDERS[rand() % NUM_MUFFIN_ORDERS];
+        muffinBoothQueue.push_back({name, order});
+    }
+
     for (int i = 0; i < 10; i++) {
         coffeeShopQueue.displayQueue();
+        
+        if (muffinBoothQueue.empty()) {
+            cout << "The queue for the muffin booth is currently empty!";
+        }
+
 
         if (!coffeeShopQueue.isEmpty())
             coffeeShopQueue.customerServed();
 
-        int customerJoins = 1 + rand() % 100;
+        int customerJoins = (1 + rand() % 100);
         if (customerJoins <= 50) {
             string name = NAMES[rand() % NUM_NAMES];
             string order = COFFEE_ORDERS[rand() % NUM_COFFEE_ORDERS];
